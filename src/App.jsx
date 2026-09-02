@@ -34,11 +34,11 @@ function App() {
         query = "gaming";
       }
 
-      const url = `https://newsapi.org/v2/everything?q=${query}&language=en&sortBy=publishedAt&pageSize=30&apiKey=${API_KEY}`;
+      const response = await fetch(
+  `/api/news?query=${encodeURIComponent(query)}`
+);
 
-      const response = await fetch(url);
-      const data = await response.json();
-
+const data = await response.json();
       if (data.status === "ok") {
         setNews(data.articles || []);
       } else {
