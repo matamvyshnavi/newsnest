@@ -42,9 +42,10 @@ function App() {
       if (data.status === "ok") {
         setNews(data.articles || []);
       } else {
-        console.error("API Error:", data.message);
-        setNews([]);
-      }
+  console.error("API Error:", data);
+  alert(data.message || "News API failed");
+  setNews([]);
+}
     } catch (error) {
       console.error("Fetch Error:", error);
       setNews([]);
